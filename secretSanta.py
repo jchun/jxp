@@ -78,9 +78,9 @@ def logAssignments(database):
 Following functions to email assigned secret santa info
 '''
 def sendEmail(giver, receiver):
-    to = secret_santa_db[giver][0]
+    to = 'joeyeatsspam@gmail.com' #@TODO replace with secret_santa_db[giver][0]
     gmail_user = 'joeyalerter@gmail.com'
-    gmail_pwd = 'alertmail'
+    gmail_pwd = 'a*l*e*r*t*m*a*i*l'
     smtpserver = smtplib.SMTP("smtp.gmail.com",587)
     smtpserver.ehlo()
     smtpserver.starttls()
@@ -106,8 +106,8 @@ def sendEmail(giver, receiver):
     
     msg = header + '\n' + content
 
-    #print msg
-    smtpserver.sendmail(gmail_user, to, msg)
+    print msg #@TODO comment out
+    #@TODO uncomment smtpserver.sendmail(gmail_user, to, msg)
     smtpserver.close()
 
 def sendAssignments():
@@ -116,7 +116,6 @@ def sendAssignments():
 
 def main():
     parseCSV(jxp_secret_santa_csv)
-    #printDB(secret_santa_db)
     assignNames(secret_santa_db)
     logAssignments(assignments_db)
     sendAssignments()
