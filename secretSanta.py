@@ -80,7 +80,7 @@ Following functions to email assigned secret santa info
 def sendEmail(giver, receiver):
     to = 'joeyeatsspam@gmail.com' #@TODO replace with secret_santa_db[giver][0]
     gmail_user = 'joeyalerter@gmail.com'
-    gmail_pwd = 'a*l*e*r*t*m*a*i*l'
+    gmail_pwd = '*'
     smtpserver = smtplib.SMTP("smtp.gmail.com",587)
     smtpserver.ehlo()
     smtpserver.starttls()
