@@ -92,7 +92,7 @@ def sendEmail(giver, receiver):
     smtpserver.starttls()
     smtpserver.ehlo
     smtpserver.login(gmail_user, gmail_pwd)
-    header = 'To:' + to + '\n' + 'From: ' + gmail_user + '\n' + 'Subject: JXP 2015 Secret Santa Assignment!\n'
+    header = 'To:' + to + '\n' + 'From: ' + gmail_user + '\n' + 'Subject: JJXP 2016 Secret Santa Assignment!\n'
     
     msg_intro = 'Hi ' + giver + ',\n\nYou have been assigned ' + receiver + '!\n'
     msg_info = 'Here is some more info about ' + receiver + '...\n\n'
@@ -116,7 +116,7 @@ def sendEmail(giver, receiver):
     msg = header + '\n' + content
 
     print msg #@TODO comment out
-    #@TODO uncomment smtpserver.sendmail(gmail_user, to, msg)
+    #smtpserver.sendmail(gmail_user, to, msg) #@TODO uncomment 
     smtpserver.close()
 
 def sendAssignments():
