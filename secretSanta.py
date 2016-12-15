@@ -13,7 +13,7 @@ from random import shuffle
 
 pathToLogFile = 'assignmentLog_' + time.strftime("%Y-%m-%d-%H-%M-%S", time.gmtime()) + '.txt'
 logFile = os.path.normpath(pathToLogFile)
-jxp_secret_santa_csv = 'JXP 2015 Secret Santa Sign-Up (Responses) - Form Responses 1.tsv'
+jxp_secret_santa_csv = 'JJXP 2016 Secret Santa Sign-Up (Responses) - Form Responses 1.tsv'
 secret_santa_db = {}
 assignments_db = {}
 guest_names = []
@@ -30,15 +30,16 @@ def parseCSV(fileName):
         next(csvfile)
         secretSantaCSV = csv.reader(csvfile, dialect="excel-tab")
         for row in secretSantaCSV:
-            timestamp, color, interests, allergies, notes, name, email = row
+            timestamp, name, email, color, size, movie, magicSB, allergies, notes = row
             if not allergies:
                 allergies = 'None'
             if not notes:
                 notes = 'None'
             if name == 'N/A':
                 continue
-            secret_santa_db[name] = (email, color, \
-                                    interests, allergies, notes)
+            secret_santa_db[name] = (email, color, size,\
+                                     movie, magicSB, allergies,\
+                                     notes)
             guest_names.append(name)
 
 def assignNames(source_db):
@@ -60,9 +61,13 @@ def printDB(database):
     for key, value in database.iteritems():
         print '***'
         print key
-        email, color, interests, allergies, notes = value
+        email, color, size, movie, magicSB, allergies, notes \
+                = value
         print 'email:       ' + email
-        print 'interests:   ' + interests
+        print 'color:       ' + color
+        print 'size:        ' + size
+        print 'movie:       ' + movie
+        print 'magicSB:     ' + magicSB
         print 'allergies:   ' + allergies
         print 'notes:       ' + notes
         print '***'
@@ -100,7 +105,7 @@ def sendEmail(giver, receiver):
 
     receiver_info = color_info + interests_info + allergies_info + notes_info
 
-    rules = 'Gift range is $20-30, but try to keep it at less than $25. Do NOT reveal your Secret Santa identity to your giftee OR to other participants. If you need more information about your giftee, try to be discrete. Good luck and have fun!\n\nMerry Christmas!\nJXP-bot\n'
+    rules = 'Gift range is $20-30. Do NOT reveal your Secret Santa identity to your giftee OR to other participants, including your significant other! If you need more information about your giftee, try to be discrete. Good luck and have fun!\n\nMerry Christmas!\nJXP-bot\n'
 
     content =  msg_intro + msg_info + receiver_info + rules
     
