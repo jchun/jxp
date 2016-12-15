@@ -3,6 +3,7 @@
 '''
 Created by Joseph Chun
 December 1 2015
+Updated: 2016
 '''
 
 import csv
@@ -85,7 +86,7 @@ Following functions to email assigned secret santa info
 def sendEmail(giver, receiver):
     to = 'joeyeatsspam@gmail.com' #@TODO replace with secret_santa_db[giver][0]
     gmail_user = 'joeyalerter@gmail.com'
-    gmail_pwd = '*'
+    gmail_pwd = '***'
     smtpserver = smtplib.SMTP("smtp.gmail.com",587)
     smtpserver.ehlo()
     smtpserver.starttls()
@@ -96,14 +97,17 @@ def sendEmail(giver, receiver):
     msg_intro = 'Hi ' + giver + ',\n\nYou have been assigned ' + receiver + '!\n'
     msg_info = 'Here is some more info about ' + receiver + '...\n\n'
     
-    email, color, interests, allergies, notes = secret_santa_db[receiver]
+    email, color, size, movie, magicSB, allergies, notes = secret_santa_db[receiver]
 
     color_info =        'Favorite color: ' + color + '\n'
-    interests_info =    'Interests: ' + interests + '\n'
+    size_info =    'Shirt size: ' + size + '\n'
+    movie_info =        'Likes movies: ' + movie + '\n'
+    magicSB_info =      'Most similar to: ' + magicSB + '\n'
     allergies_info =    'Allergies: ' + allergies + '\n'
     notes_info =        'Additional notes: ' + notes + '\n\n'
 
-    receiver_info = color_info + interests_info + allergies_info + notes_info
+    receiver_info = color_info + size_info + movie_info + \
+                    magicSB_info +allergies_info + notes_info
 
     rules = 'Gift range is $20-30. Do NOT reveal your Secret Santa identity to your giftee OR to other participants, including your significant other! If you need more information about your giftee, try to be discrete. Good luck and have fun!\n\nMerry Christmas!\nJXP-bot\n'
 
