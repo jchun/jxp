@@ -1,0 +1,21 @@
+Start Secret Santa Log ***
+***
+Danny	 : 	Ji Wan Kim 
+***
+David Kim	 : 	Danny
+***
+Juliana	 : 	Jane Choi
+***
+Ji Wan Kim 	 : 	Jitae
+***
+Jane Choi	 : 	David Kim
+***
+Jieun Chun	 : 	Allen
+***
+Jitae	 : 	Jieun Chun
+***
+Allen	 : 	Joey
+***
+Caleb Lee & Heesu Youn	 : 	Juliana
+***
+Joey	 : 	Caleb Lee & Heesu Youn
