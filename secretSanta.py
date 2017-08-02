@@ -100,7 +100,7 @@ def sendEmail(giver, receiver):
     email, color, size, movie, magicSB, allergies, notes = secret_santa_db[receiver]
 
     color_info =        'Favorite color: ' + color + '\n'
-    size_info =    'Shirt size: ' + size + '\n'
+    size_info =         'Shirt size: ' + size + '\n'
     movie_info =        'Likes movies: ' + movie + '\n'
     magicSB_info =      'Most similar to: ' + magicSB + '\n'
     allergies_info =    'Allergies: ' + allergies + '\n'
