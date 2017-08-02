@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 '''
 Created by Joseph Chun
@@ -27,7 +27,7 @@ def parseCSV(fileName):
     '''
     Parse fileName arg and place information into secret_santa_db and guest_names
     '''
-    with open(fileName, 'rb') as csvfile:
+    with open(fileName, 'rt') as csvfile:
         next(csvfile)
         secretSantaCSV = csv.reader(csvfile, dialect="excel-tab")
         for row in secretSantaCSV:
@@ -48,7 +48,7 @@ def assignNames(source_db):
     Shuffle guest names, then put assignments in assignments_db
     '''
     shuffle(guest_names)
-    for index in xrange(0, len(guest_names)):
+    for index in range(0, len(guest_names)):
         if index == len(guest_names) - 1:
             assignments_db[guest_names[index]] = guest_names[0]
             continue
@@ -59,24 +59,24 @@ Helper functions to print contents of databases
 '''
 
 def printDB(database):
-    for key, value in database.iteritems():
-        print '***'
-        print key
+    for key, value in database.items():
+        print('***')
+        print(key)
         email, color, size, movie, magicSB, allergies, notes \
                 = value
-        print 'email:       ' + email
-        print 'color:       ' + color
-        print 'size:        ' + size
-        print 'movie:       ' + movie
-        print 'magicSB:     ' + magicSB
-        print 'allergies:   ' + allergies
-        print 'notes:       ' + notes
-        print '***'
+        print('email:       ' + email)
+        print('color:       ' + color)
+        print('size:        ' + size)
+        print('movie:       ' + movie)
+        print('magicSB:     ' + magicSB)
+        print('allergies:   ' + allergies)
+        print('notes:       ' + notes)
+        print('***')
 
 def logAssignments(database):
     with open(logFile, "a") as f:
         f.write('Start Secret Santa Log ***\n')
-        for key, value in database.iteritems():
+        for key, value in database.items():
             f.write('***\n')
             f.write(key + '\t : \t' +  value + '\n')
 
@@ -115,12 +115,12 @@ def sendEmail(giver, receiver):
     
     msg = header + '\n' + content
 
-    print msg #@TODO comment out
+    print(msg) #@TODO comment out
     #smtpserver.sendmail(gmail_user, to, msg) #@TODO uncomment 
     smtpserver.close()
 
 def sendAssignments():
-    for giver, receiver  in assignments_db.iteritems():
+    for giver, receiver  in assignments_db.items():
         sendEmail(giver, receiver)
 
 def main():
@@ -132,4 +132,4 @@ def main():
 if __name__ == '__main__':
     startTime = time.time()
     main()
-    print 'Time taken: ' + str(time.time()-startTime) + ' secs'
+    print('Time taken: ' + str(time.time()-startTime) + ' secs')
