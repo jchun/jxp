@@ -88,9 +88,12 @@ def sendEmail(giver, receiver):
     gmail_user = 'joeyalerter@gmail.com'
     gmail_pwd = '***'
     smtpserver = smtplib.SMTP("smtp.gmail.com",587)
+    # identify ourselves to smtp gmail client
     smtpserver.ehlo()
+    # secure our email with tls encryption
     smtpserver.starttls()
-    smtpserver.ehlo
+    # re-identify ourselves as an ecrypted connection
+    smtpserver.ehlo()
     smtpserver.login(gmail_user, gmail_pwd)
     header = 'To:' + to + '\n' + 'From: ' + gmail_user + '\n' + 'Subject: JJXP 2016 Secret Santa Assignment!\n'
     
